@@ -23,9 +23,6 @@ public class PayCard {
     }
 
 
-    public void PutCard(ATM atm){
-
-    }
 
 
 

@@ -27,10 +27,10 @@ public class Frame extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowStateChanged(WindowEvent e) {
-                // Если окно пытаются максимизировать, восстанавливаем его размер
-                if ((e.getNewState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH) {
-                    setExtendedState(JFrame.NORMAL);
-                }
+            // Если окно пытаются максимизировать, восстанавливаем его размер
+            if ((e.getNewState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH) {
+                setExtendedState(JFrame.NORMAL);
+            }
             }
         });
 
@@ -66,7 +66,7 @@ public class Frame extends JFrame {
         // Добавляем метку в северную часть панели
         mainPanel.add(chooseTheAction, BorderLayout.NORTH);
     }
-
+    
     public void Buttons(JPanel mainPanel) {
         JButton buttonDeposit = new JButton("Сделать депозит");
         JButton buttonWithDraw = new JButton("Снять средства");
@@ -92,16 +92,17 @@ public class Frame extends JFrame {
                 // Например, открытие формы для внесения депозита
                 String userInput = JOptionPane.showInputDialog(Frame.this, "Введите сумму:", "Депозит", JOptionPane.PLAIN_MESSAGE);
 
-                try {
-                    int cash = Integer.parseInt(userInput);
-                    GetAtm().MakeDeposit(cash);
+                if (userInput != null) {
+                    try {
+                        int cash = Integer.parseInt(userInput);
+                        GetAtm().MakeDeposit(cash);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(Frame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
-                catch(NumberFormatException ex) {
-
-                    JOptionPane.showMessageDialog(Frame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
-
+                else {
+                    JOptionPane.showMessageDialog(Frame.this, "Операция отменена.", "Отмена", JOptionPane.INFORMATION_MESSAGE);
                 }
-
 
             }
         });
@@ -113,7 +114,7 @@ public class Frame extends JFrame {
 
                 try {
                     int cash = Integer.parseInt(userInput);
-                    GetAtm().withDrawCash(cash);
+                    GetAtm().WithDrawCash(cash);
                 }
                 catch(NumberFormatException ex) {
 

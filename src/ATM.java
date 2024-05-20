@@ -3,24 +3,18 @@ public class ATM {
     private int availableCash;
     private int availableMaxDeposit;
 
-    public  ATM(int availableCash)
-    {
-        this.availableCash = availableCash;
-        this.availableMaxDeposit = 10000;
-    }
-
     public void MakeDeposit(int cashAmount)
     {
         if (availableMaxDeposit >= cashAmount)
         {
-                this.availableCash += cashAmount;
-                System.out.println("Транзакция успешно введена!");
+            this.availableCash += cashAmount;
+            System.out.println("Транзакция успешно введена!");
         }
         else
             System.out.println("Ошибка, превышен лимит депозита");
     }
 
-    public void withDrawCash(int cashAmount)
+    public void WithDrawCash(int cashAmount)
     {
         if (cashAmount <= this.availableCash)
         {
@@ -29,6 +23,10 @@ public class ATM {
         }
         else
             System.out.println("Ошибка, недостаточно средств для вывода!");
+    }
+
+    public void PutCard(){
+
     }
 
     public void ShowCash()
@@ -40,6 +38,8 @@ public class ATM {
     {
         return availableCash;
     }
+
+
 
 
 
