@@ -10,7 +10,7 @@ public class ATM {
     {
         if (availableMaxDeposit >= cashAmount)
         {
-            this.availableCash += cashAmount;
+            this.card.Deposit(cashAmount);
             System.out.println("Транзакция успешно введена!");
         }
         else
@@ -21,7 +21,7 @@ public class ATM {
     {
         if (cashAmount <= this.availableCash)
         {
-            this.availableCash -= cashAmount;
+            this.card.WithdrawCash(cashAmount);
             System.out.println("Средства успешно выведены!");
         }
         else
@@ -31,8 +31,7 @@ public class ATM {
 
     public void InsertCard(PayCard card){
         this.card = card;
-        this.availableCash = card.getBalance();
-        this.availableMaxDeposit = card.getBalance() * 100;
+        this.availableMaxDeposit = this.card.getBalance() * 100;
     }
 
     public void ShowCardInfo(){

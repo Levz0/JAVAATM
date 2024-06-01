@@ -53,7 +53,7 @@ public class CardFrame extends JFrame {
         balanceField.setFont(largeFont);
         panel.add(balanceField);
 
-        panel.add(new JLabel("Date Get (MM.dd.yyyy):"));
+        panel.add(new JLabel("Date Get (dd.MM.yyyy):"));
         dateGetField = new JTextField();
         dateGetField.setFont(largeFont);
         panel.add(dateGetField);
@@ -83,7 +83,7 @@ public class CardFrame extends JFrame {
         }
         String DataGet = dateGetField.getText();;
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate FormatedDataGet = LocalDate.parse(DataGet, formatter);
 
 
