@@ -1,6 +1,7 @@
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 public class PayCard {
     private String Number;
@@ -27,13 +28,25 @@ public class PayCard {
         return Balance;
     }
 
-    public String getOwner(){
+    public String getOwner( ) {
         return Owner;
     }
 
-    public LocalDate getDateGet() {
+    public LocalDate getDateGet( ) {
         return DateGet;
     }
 
+    public void setBalance(double balance){
+        Balance = balance;
+    }
 
+    public void Deposit(double cashAmount){
+        Balance = Balance + cashAmount;
+
+    }
+
+    public void WithdrawCash(double cashAmount){
+        Balance = Balance - cashAmount;
+
+    }
 }
