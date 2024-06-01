@@ -1,7 +1,10 @@
+
+
 public class ATM {
 
-    private int availableCash;
-    private int availableMaxDeposit;
+    private double availableCash;
+    private double availableMaxDeposit;
+    private PayCard card;
 
     public void MakeDeposit(int cashAmount)
     {
@@ -25,22 +28,23 @@ public class ATM {
             System.out.println("Ошибка, недостаточно средств для вывода!");
     }
 
-    public void PutCard(){
 
+    public void InsertCard(PayCard card){
+        this.card = card;
+        this.availableCash = card.getBalance();
+        this.availableMaxDeposit = card.getBalance() * 100;
     }
 
-    public void ShowCash()
-    {
-        System.out.println(availableCash());
+    public void ShowCardInfo(){
+        System.out.println(
+                "Владелец: " + card.getOwner() + "\n" +
+                "Баланс: " + card.getBalance() + " руб \n" +
+                "Дата получения: " +  card.getDateGet()
+        );
     }
 
-    public int availableCash()
-    {
-        return availableCash;
+    public PayCard GetCard(PayCard card){
+        return card;
     }
-
-
-
-
 
 }

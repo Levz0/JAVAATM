@@ -1,14 +1,15 @@
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PayCard {
     private String Number;
     private String Owner;
     private double Balance;
-    private Date DateGet;
+    private LocalDate DateGet;
     private boolean isBlocked;
 
-    public PayCard(String Number, String Owner, double Balance, Date DateGet){
+    public PayCard(String Number, String Owner, double Balance, LocalDate DateGet){
         this.Number = Number;
         this.Owner = Owner;
         this.Balance = Balance;
@@ -19,13 +20,20 @@ public class PayCard {
         this.Number = Number;
         this.Owner = Owner;
         this.Balance = 0;
-        this.DateGet = new Date();
+
     }
 
+    public double getBalance() {
+        return Balance;
+    }
 
+    public String getOwner(){
+        return Owner;
+    }
 
-
-
+    public LocalDate getDateGet() {
+        return DateGet;
+    }
 
 
 }

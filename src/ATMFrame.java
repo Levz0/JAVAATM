@@ -7,13 +7,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 
-public class Frame extends JFrame {
+public class ATMFrame extends JFrame {
     
     private ATM atm;
 
     JLabel cashLabel;
 
-    public Frame(ATM atm) {
+    public ATMFrame(ATM atm) {
         this.atm = atm;
         setTitle("Банкомат");
         ImageIcon icon = new ImageIcon("src/resources/ATM.png");
@@ -90,18 +90,18 @@ public class Frame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Ваш код для действия по нажатию кнопки "Сделать депозит"
                 // Например, открытие формы для внесения депозита
-                String userInput = JOptionPane.showInputDialog(Frame.this, "Введите сумму:", "Депозит", JOptionPane.PLAIN_MESSAGE);
+                String userInput = JOptionPane.showInputDialog(ATMFrame.this, "Введите сумму:", "Депозит", JOptionPane.PLAIN_MESSAGE);
 
                 if (userInput != null) {
                     try {
                         int cash = Integer.parseInt(userInput);
                         GetAtm().MakeDeposit(cash);
                     } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(Frame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(ATMFrame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else {
-                    JOptionPane.showMessageDialog(Frame.this, "Операция отменена.", "Отмена", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(ATMFrame.this, "Операция отменена.", "Отмена", JOptionPane.INFORMATION_MESSAGE);
                 }
 
             }
@@ -110,7 +110,7 @@ public class Frame extends JFrame {
         buttonWithDraw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userInput = JOptionPane.showInputDialog( Frame.this, "Введите сумму:", "Вывод средств", JOptionPane.PLAIN_MESSAGE);
+                String userInput = JOptionPane.showInputDialog( ATMFrame.this, "Введите сумму:", "Вывод средств", JOptionPane.PLAIN_MESSAGE);
 
                 try {
                     int cash = Integer.parseInt(userInput);
@@ -118,7 +118,7 @@ public class Frame extends JFrame {
                 }
                 catch(NumberFormatException ex) {
 
-                    JOptionPane.showMessageDialog(Frame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(ATMFrame.this, "Ошибка! Введите корректное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
 
                 }
 
@@ -130,8 +130,8 @@ public class Frame extends JFrame {
         buttonShowCash.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GetAtm().ShowCash();
-                cashLabel.setText(String.valueOf(GetAtm().availableCash()));
+                GetAtm().ShowCardInfo();
+
 
             }
         });
